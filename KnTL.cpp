@@ -58,7 +58,7 @@ int compile(int m = 0) {
   transpile();
   int ret = system((
     GPP + " \"" + tmpile + "\" -o \"" + exe + "\"" +
-    (m?"":" && echo -e \\\e[1m\\\e[32mCOMPILATION SUCCESSFUL")
+    (m?"":" && echo \\\e[1m\\\e[32mCOMPILATION SUCCESSFUL")
   ).c_str());
   if (ret == 0) compiled = 1;
   if (ret || !m) scanf("%[^\n]", str), getchar();
@@ -68,7 +68,7 @@ void run(string args = "", int m = 0) {
   if (m == 1 && compile(1)) return;
   auto start = std::chrono::high_resolution_clock::now();
   system((
-    "\"" + exe + "\"" + args + " || echo -e \\\e[1m\\\e[31mRUNTIME ERROR"
+    "\"" + exe + "\"" + args + " || echo \\\e[1m\\\e[31mRUNTIME ERROR"
   ).c_str());
   auto finish = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> elapsed = finish - start;
